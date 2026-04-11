@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio - Esti Temmar</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    /* NAVBAR */
+    nav {
+      background: #1a3a5c;
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+    .nav-logo {
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+    }
+    .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .nav-links a:hover { color: white; }
+
+    /* HERO */
+    .hero {
+      background: #1a3a5c;
+      color: white;
+      padding: 60px 40px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    /* FOTO */
+    .hero-photo {
+      width: 180px;
+      height: 220px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #2a4f78;
+      flex-shrink: 0;
+      border: 3px solid #4a8fc1;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #7aabcc;
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 12px;
+    }
+    .photo-placeholder span {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+    }
+    .hero-text h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .hero-text .subtitle {
+      color: #90c4e8;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .hero-text p {
+      font-size: 0.9rem;
+      color: #bbd6ed;
+      max-width: 420px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .btn {
+      display: inline-block;
+      background: #2e7dbf;
+      color: white;
+      padding: 10px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn:hover { background: #3a8fd1; transform: translateY(-1px); }
+
+    /* SECTION */
+    section {
+      padding: 50px 40px;
+    }
+    section:nth-child(even) { background: #fff; }
+    section:nth-child(odd) { background: #f5f5f5; }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #1a3a5c;
+      margin-bottom: 6px;
+      border-left: 4px solid #2e7dbf;
+      padding-left: 12px;
+    }
+    .section-sub {
+      font-size: 0.8rem;
+      color: #888;
+      margin-bottom: 28px;
+      padding-left: 16px;
+      font-weight: 500;
+    }
+
+    /* BIODATA */
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      max-width: 720px;
+    }
+    .bio-item {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 14px 18px;
+    }
+    .bio-label {
+      font-size: 0.72rem;
+      color: #888;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+    .bio-value {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #222;
+    }
+
+    /* CV - CURRICULUM VITAE */
+    .cv-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      max-width: 860px;
+    }
+    .cv-col-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #1a3a5c;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* RIWAYAT PENDIDIKAN */
+    .cv-item {
+      padding-left: 16px;
+      border-left: 2px solid #2e7dbf;
+      margin-bottom: 20px;
+    }
+    .cv-year {
+      font-size: 0.75rem;
+      color: #2e7dbf;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .cv-inst {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #222;
+      margin-bottom: 2px;
+    }
+    .cv-desc { font-size: 0.82rem; color: #666; }
+
+    /* SKILLS - KEAHLIAN */
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .skill-icon {
+      font-size: 1.2rem;
+      width: 36px;
+      text-align: center;
+    }
+    .skill-name { font-weight: 700; font-size: 0.9rem; color: #222; }
+    .skill-desc { font-size: 0.78rem; color: #777; }
+
+    /* SOSMED - MEDIA SOSIAL */
+    .sosmed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      max-width: 800px;
+    }
+    .sosmed-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px 18px;
+      text-decoration: none;
+      color: #333;
+      transition: border-color 0.25s, background 0.25s, transform 0.25s;
+    }
+    .sosmed-card:hover {
+      transform: translateY(-4px);
+      border-color: #2e7dbf;
+      background: #f0f7ff;
+    }
+    .sosmed-platform { font-size: 0.72rem; color: #888; margin-bottom: 2px; font-weight: 600; }
+    .sosmed-handle { font-weight: 700; font-size: 0.88rem; color: #1a3a5c; }
+    .s-icon { font-size: 1.6rem; }
+
+    /* FOOTER */
+    footer {
+      background: #1a3a5c;
+      color: #90c4e8;
+      text-align: center;
+      padding: 20px 40px;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 12px 20px; }
+      .hero { flex-direction: column; padding: 40px 20px; text-align: center; }
+      section { padding: 40px 20px; }
+      .bio-grid, .cv-cols { grid-template-columns: 1fr; }
+      .hero-photo { width: 140px; height: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-logo">My Portofolio</div>
+    <ul class="nav-links">
+      <li><a href="#biodata">Biodata</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#sosmed">Sosmed</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+
+    <!-- FOTO -->
+    <div class="hero-photo">
+      <img src="fotoformal.jpg" alt="Foto Esti Temmar" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📷</span><p>Foto formal saya</p></div>'">
+    </div>
+
+    <div class="hero-text">
+      <h1>Esti Temmar</h1>
+      <p class="subtitle">Mahasiswa Sistem Informasi · Institut Agama Kristen Negeri Ambon</p>
+      <p>Mahasiswa aktif program studi Sistem Informasi yang antusias di bidang teknologi informasi dan pengembangan berbasis web. Siap belajar dan berkontribusi di era digital.</p>
+      <a href="#biodata" class="btn">Lihat Profil Saya</a>
+    </div>
+
+  </div>
+
+  <!-- SECTION - BIODATA -->
+  <section id="biodata">
+    <div class="section-title">Biodata</div>
+    <div class="section-sub">Tentang Saya</div>
+    <div class="bio-grid">
+      <div class="bio-item">
+        <div class="bio-label">Nama Lengkap</div>
+        <div class="bio-value">Esti Leonora Temmar</div>
+      </div>
+      <div class="bio-item">
+        <div class="bio-label">NIM</div>
+        <div class="bio-value">1520240401012</div>
+      </div>
+      <div class="bio-item">
+        <div class="bio-label">Tempat, Tanggal Lahir</div>
+        <div class="bio-value">Tual, 10 Mei 2005</div>
+      </div>
+      <div class="bio-item">
+        <div class="bio-label">Jenis Kelamin</div>
+        <div class="bio-value">Perempuan</div>
+      </div>
+      <div class="bio-item">
+        <div class="bio-label">Agama</div>
+        <div class="bio-value">Kristen</div>
+      </div>
+      <div class="bio-item">
+        <div class="bio-label">Kewarganegaraan</div>
+        <div class="bio-value">Indonesia</div>
+      </div>
+      <div class="bio-item">
+        <div class="bio-label">Alamat</div>
+        <div class="bio-value">Jl. Piere Tandean, Hative Kecil</div>
+      </div>
+      <div class="bio-item">
+        <div class="bio-label">No. Telepon / WA</div>
+        <div class="bio-value">+62 821 9841 9220</div>
+      </div>
+      <div class="bio-item">
+        <div class="bio-label">Email</div>
+        <div class="bio-value">esti.temmar@gmail.com</div>
+      </div>
+      <div class="bio-item">
+        <div class="bio-label">Program Studi</div>
+        <div class="bio-value">Sistem Informasi — S1</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION - CURRICULUM VITAE -->
+  <section id="cv">
+    <div class="section-title">Curriculum Vitae</div>
+    <div class="section-sub">Profil Akademik</div>
+    <div class="cv-cols">
+
+      <!-- RIWAYAT PENDIDIKAN -->
+      <div>
+        <div class="cv-col-title">🎓 Riwayat Pendidikan</div>
+        <div class="cv-item">
+          <div class="cv-year">2024 – Sekarang</div>
+          <div class="cv-inst">Institut Agama Kristen Negeri Ambon</div>
+          <div class="cv-desc">S1 Sistem Informasi</div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-year">2020 – 2023</div>
+          <div class="cv-inst">SMA Negeri 5 Ambon</div>
+          <div class="cv-desc">Jurusan IPS</div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-year">2017 – 2020</div>
+          <div class="cv-inst">SMP Negeri 3 Ambon</div>
+          <div class="cv-desc">Lulus tahun 2020</div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-year">2011 – 2017</div>
+          <div class="cv-inst">SD Negeri 2 Galala</div>
+          <div class="cv-desc">Lulus tahun 2017</div>
+        </div>
+      </div>
+
+      <!-- SKILLS - KEAHLIAN -->
+      <div>
+        <div class="cv-col-title">💡 Keahlian</div>
+        <div class="skill-item">
+          <div class="skill-icon">📝</div>
+          <div>
+            <div class="skill-name">Microsoft Word</div>
+            <div class="skill-desc">Membuat dokumen, laporan, dan surat formal</div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">📊</div>
+          <div>
+            <div class="skill-name">Microsoft Excel</div>
+            <div class="skill-desc">Mengolah data, tabel, dan rumus dasar</div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">📑</div>
+          <div>
+            <div class="skill-name">Microsoft PowerPoint</div>
+            <div class="skill-desc">Membuat presentasi dan slide yang menarik</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SOSIAL MEDIA -->
+  <section id="sosmed">
+    <div class="section-title">Media Sosial</div>
+    <div class="section-sub">Temukan Saya di</div>
+
+    <!-- SOSMED -->
+    <div class="sosmed-grid">
+      <a href="https://www.instagram.com/estitemmar_/" target="_blank" class="sosmed-card">
+        <div class="s-icon"><i class="fa-brands fa-instagram"></i></div>
+        <div>
+          <div class="sosmed-platform">Instagram</div>
+          <div class="sosmed-handle">@estitemmar_</div>
+        </div>
+      </a>
+      <a href="https://www.facebook.com/share/1CTY2w5o6D/" target="_blank" class="sosmed-card">
+        <div class="s-icon"><i class="fa-brands fa-facebook"></i></div>
+        <div>
+          <div class="sosmed-platform">Facebook</div>
+          <div class="sosmed-handle">Facebook Profile</div>
+        </div>
+      </a>
+      <a href="https://www.tiktok.com/@cigswdrunk" target="_blank" class="sosmed-card">
+        <div class="s-icon"><i class="fa-brands fa-tiktok"></i></div>
+        <div>
+          <div class="sosmed-platform">TikTok</div>
+          <div class="sosmed-handle">@cigswdrunk</div>
+        </div>
+      </a>
+      <a href="https://github.com/estitemmar" target="_blank" class="sosmed-card">
+        <div class="s-icon"><i class="fa-brands fa-github"></i></div>
+        <div>
+          <div class="sosmed-platform">GitHub</div>
+          <div class="sosmed-handle">estitemmar</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Esti · Pemrograman Berbasis Web · Website Portofolio</p>
+  </footer>
+
+</body>
+</html>
